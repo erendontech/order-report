@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: orderReport
+  router:
+    static-resources:
+      webjars:
+        paths: "classpath:META-INF/resources/webjars"
+        mapping: "/webjars/**"
+      default:
+        enabled: true
+        mapping: "/**"
+        paths: "classpath:static"
+  http:
+    services:
+      core-ms:
+        urls:
+          - 'http://localhost:8081/api/ms/order-core'
+        read-timeout: 2000ms
+        connect-timeout: 2000ms
+        pool:
+          enabled: true
+          max-connections: 200
+netty:
+  default:
+    allocator:
+      max-order: 3
